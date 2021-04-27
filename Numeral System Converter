@@ -1,0 +1,97 @@
+package converter;
+import java.util.Scanner;
+
+public class Main {
+        public static void main(String[] args) {
+            try{
+                Scanner sc = new Scanner(System.in);
+                int numeralSystem = sc.nextInt();
+                sc.nextLine();
+                String number = sc.nextLine();
+                int newNumeralSystem = sc.nextInt();
+                if(numeralSystem == 0 || newNumeralSystem == 0 || numeralSystem > 36 || newNumeralSystem > 36
+                        || numeralSystem < 1 || newNumeralSystem < 1){
+                    System.out.println("error");
+                    return;
+                }
+                convertingFractions(numeralSystem, number, newNumeralSystem);
+            } catch (Exception e){
+                System.out.println("error");
+            }
+        }
+
+    public static void convertingFractions(int numeralSystem, String num, int newNumeralSystem){
+        if(isInteger(num)){ //not a fraction
+            System.out.println(convertingNumber(numeralSystem, Integer.parseInt(num), newNumeralSystem));
+        } else if(!isDouble(num)) { //contains letters
+            int first = Integer.parseInt(num.substring(0,num.indexOf(".")), numeralSystem);
+            StringBuilder result = new StringBuilder(Integer.toString(first, newNumeralSystem) + ".");
+            double decimal = 0;
+            int exponent = 1;
+            for (int i = num.indexOf(".") + 1; i < num.length(); i++) {
+                String ch = "";
+                ch += num.charAt(i);
+                decimal += (Integer.parseInt(ch, numeralSystem)) / Math.pow(numeralSystem, exponent++);
+                // convert fractional part into decimal by use of formula
+            }
+            int counter = 0;
+            while (counter < 5) {
+                decimal *= newNumeralSystem;
+                result = result.append(Integer.toString((int)decimal, newNumeralSystem));
+                decimal -= (int) decimal;
+                counter++;
+            }
+            System.out.println(result);
+        } else { //if it's a fraction
+            StringBuilder result = new StringBuilder();
+            result.append(convertingNumber(numeralSystem, Integer.parseInt(num.substring(0, num.indexOf('.'))), newNumeralSystem)).append(".");
+            for (int i = 0; i < 5; i++) {
+                num = "0." + num.substring(num.indexOf('.') + 1);
+                num = "" + Double.parseDouble(num) * newNumeralSystem;
+                result.append(convertingNumber(numeralSystem, Integer.parseInt(num.substring(0, num.indexOf('.'))), newNumeralSystem));
+            }
+            System.out.println(result);
+        }
+    }
+
+    public static String convertingNumber(int numeralSystem, int number, int newNumeralSystem){
+
+        String startNum = "" + number;
+        if (numeralSystem > 1 && newNumeralSystem > 1) {
+            int tempNum = Integer.parseInt(startNum, numeralSystem);
+            return Integer.toString(tempNum, newNumeralSystem);
+        } else {
+            if (numeralSystem == 1) {
+                int tempNum = 0;
+                for (int i = 0; i < startNum.length(); i++) {
+                    tempNum++;
+                }
+                return Integer.toString(tempNum, newNumeralSystem);
+            } else if (newNumeralSystem == 1) {
+                StringBuilder endNum = new StringBuilder();
+                for (int i = 0; i < number; i++) {
+                    endNum.append(1);
+                }
+                return endNum.toString();
+            }
+        }
+        return "0";
+    }
+    public static boolean isDouble(String s) {
+        try {
+            Double.parseDouble(s);
+        } catch(NumberFormatException | NullPointerException e) {
+            return false;
+        }
+        return true;
+    }
+    public static boolean isInteger(String s) {
+        try {
+            Integer.parseInt(s);
+        } catch(NumberFormatException | NullPointerException e) {
+            return false;
+        }
+        return true;
+    }
+
+}
