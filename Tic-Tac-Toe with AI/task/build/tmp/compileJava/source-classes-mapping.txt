@@ -1,2 +1,4 @@
+tictactoe/AI.java
+ tictactoe.AI
 tictactoe/Main.java
  tictactoe.Main

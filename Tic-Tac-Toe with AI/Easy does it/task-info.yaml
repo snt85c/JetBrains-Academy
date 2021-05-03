@@ -585,19 +585,12 @@ files:
         }
     }
   learner_created: false
+- name: src/tictactoe/AI.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/81/stages/448/implement#comment
-status: Failed
+status: Solved
 feedback:
-  message: |-
-    Wrong answer in test #1
-
-    Expected not less than 1 grids in the output!
-    Make sure you print the game grids in the correct format!
-
-    Please find below the output of your program during this failed test.
-
-    ---
-
-    Enter the cells:
-  time: Sun, 02 May 2021 11:33:42 UTC
+  message: Congratulations!
+  time: Mon, 03 May 2021 17:55:58 UTC
 record: 2

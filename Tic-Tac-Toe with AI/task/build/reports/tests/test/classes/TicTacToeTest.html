@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">1</div>
+<div class="counter">0</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.134s</div>
+<div class="counter">2.200s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox failures" id="successRate">
-<div class="percent">0%</div>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,85 +61,13 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Failed tests</a>
+<a href="#tab0">Tests</a>
 </li>
 <li>
-<a href="#tab1">Tests</a>
-</li>
-<li>
-<a href="#tab2">Standard output</a>
+<a href="#tab1">Standard output</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
-<h2>Failed tests</h2>
-<div class="test">
-<a name="start"></a>
-<h3 class="failures">start</h3>
-<span class="code">
-<pre>java.lang.AssertionError: Wrong answer in test #1
-
-Expected not less than 1 grids in the output!
-Make sure you print the game grids in the correct format!
-
-Please find below the output of your program during this failed test.
-
----
-
-Enter the cells:
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:136)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:119)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:414)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-</pre>
-</span>
-</div>
-</div>
-<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -150,18 +78,2328 @@ Enter the cells:
 </tr>
 </thead>
 <tr>
-<td class="failures">start</td>
-<td class="failures">0.134s</td>
-<td class="failures">failed</td>
+<td class="success">start</td>
+<td class="success">2.200s</td>
+<td class="success">passed</td>
 </tr>
 </table>
 </div>
-<div id="tab2" class="tab">
+<div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
 <pre>?[1;31m
 Start test 1?[0m
-Enter the cells: 
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+|   O   |
+---------
+Enter the coordinates: 
+&gt; 1 1
+---------
+| X     |
+|   X   |
+|   O   |
+---------
+Making move level &quot;easy&quot;
+---------
+| X     |
+|   X O |
+|   O   |
+---------
+Enter the coordinates: 
+&gt; 3 3
+---------
+| X     |
+|   X O |
+|   O X |
+---------
+X wins
+?[1;31m
+Start test 2?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+| O     |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 3?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|   O   |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 4?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+| O X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 5?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+|   O   |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 6?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|   O   |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 7?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+| O     |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 8?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|   O   |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 9?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+| O     |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 10?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+| O     |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 11?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+| O     |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 12?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+|   O   |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 13?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|   O   |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 14?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|     O |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 15?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|     O |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 16?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+|     O |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 17?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|   O   |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 18?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X O |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 19?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+| O     |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 20?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X O |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 21?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+|   O   |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 22?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X O |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 23?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+| O     |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 24?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X O |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 25?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+| O X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 26?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X O |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 27?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+|   O   |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 28?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|     O |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 29?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+| O X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 30?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+| O     |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 31?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+|     O |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 32?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|     O |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 33?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+|   O   |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 34?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+| O X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 35?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|     O |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 36?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|   O   |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 37?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+| O     |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 38?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+|   O   |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 39?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+|     O |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 40?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|   O   |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 41?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|   O   |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 42?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+| O     |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 43?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|   O   |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 44?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+| O     |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 45?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+| O     |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 46?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+|     O |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 47?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|   O   |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 48?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+| O     |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 49?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|   O   |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 50?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+| O X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 51?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+|     O |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 52?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+| O     |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 53?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+| O     |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 54?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|   O   |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 55?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+| O X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 56?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+| O     |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 57?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+|     O |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 58?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X O |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 59?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+| O     |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 60?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+| O X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 61?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+| O     |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 62?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X O |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 63?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|     O |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 64?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+| O     |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 65?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+|     O |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 66?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X O |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 67?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+| O X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 68?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+| O X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 69?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|     O |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 70?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+|   O   |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 71?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+| O     |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 72?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|   O   |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 73?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X O |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 74?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+| O     |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 75?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+| O     |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 76?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+| O     |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 77?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+| O X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 78?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+|   O   |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 79?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|   O   |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 80?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+| O     |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 81?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X O |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 82?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+| O     |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 83?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+|   O   |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 84?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+| O X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 85?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+|     O |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 86?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+|     O |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 87?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+| O X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 88?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+|   O   |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 89?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|   O   |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 90?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|   O   |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 91?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|   O   |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 92?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+|     O |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 93?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|   O   |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 94?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+| O X   |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 95?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+| O     |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 96?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+|   O   |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 97?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X O |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 98?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+| O     |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 99?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+|     O |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 100?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X O |
+|       |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 101?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+|   X   |
+|   O   |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 102?[0m
+?[1;31m
+Start test 103?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; start user easy
+You should enter numbers!
+something went wrong
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|   O   |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+&gt; 1 1
+---------
+| X O   |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+| X O   |
+|   X   |
+|     O |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 104?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; start user easy
+You should enter numbers!
+something went wrong
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|   O   |
+|   X   |
+|       |
+---------
+Enter the coordinates: 
+&gt; 1 1
+---------
+| X O   |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+| X O   |
+|   X   |
+|     O |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 105?[0m
+---------
+|       |
+|       |
+|       |
+---------
+Enter the coordinates: 
+&gt; start user easy
+You should enter numbers!
+something went wrong
+Enter the coordinates: 
+&gt; 2 2
+---------
+|       |
+|   X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+|       |
+| O X   |
+|       |
+---------
+Enter the coordinates: 
+&gt; 1 1
+---------
+| X     |
+| O X   |
+|       |
+---------
+Making move level &quot;easy&quot;
+---------
+| X     |
+| O X   |
+| O     |
+---------
+Enter the coordinates: 
+?[1;31m
+Start test 106?[0m
+?[1;31m
+Start test 107?[0m
+?[1;31m
+Start test 108?[0m
+?[1;31m
+Start test 109?[0m
+?[1;31m
+Start test 110?[0m
+?[1;31m
+Start test 111?[0m
+?[1;31m
+Start test 112?[0m
+?[1;31m
+Start test 113?[0m
+?[1;31m
+Start test 114?[0m
+?[1;31m
+Start test 115?[0m
+?[1;31m
+Start test 116?[0m
+?[1;31m
+Start test 117?[0m
+?[1;31m
+Start test 118?[0m
+?[1;31m
+Start test 119?[0m
+?[1;31m
+Start test 120?[0m
+?[1;31m
+Start test 121?[0m
+?[1;31m
+Start test 122?[0m
+?[1;31m
+Start test 123?[0m
+?[1;31m
+Start test 124?[0m
+?[1;31m
+Start test 125?[0m
+?[1;31m
+Start test 126?[0m
+?[1;31m
+Start test 127?[0m
+?[1;31m
+Start test 128?[0m
+?[1;31m
+Start test 129?[0m
+?[1;31m
+Start test 130?[0m
+?[1;31m
+Start test 131?[0m
+?[1;31m
+Start test 132?[0m
+?[1;31m
+Start test 133?[0m
 </pre>
 </span>
 </div>
@@ -173,7 +2411,7 @@ Enter the cells:
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 6.6.1</a> at 2 May 2021, 12:33:42</p>
+<a href="http://www.gradle.org">Gradle 6.6.1</a> at 3 May 2021, 18:55:58</p>
 </div>
 </div>
 </body>

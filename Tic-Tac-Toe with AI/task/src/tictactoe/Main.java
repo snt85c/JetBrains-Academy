@@ -3,40 +3,38 @@ package tictactoe;
 import java.util.Scanner;
 
 public class Main {
-    static String cells = "";
     static String[][] board = new String[3][3];
 
-
     public static void main(String[] args) {
-        // write your code here
+        AI ai = new AI();
         Scanner scanner = new Scanner(System.in);
-        userInterface(scanner);
+        userInterface(scanner, ai);
     }
-    wk
-:wq
 
-    public static void userInterface (Scanner scanner){
-        System.out.println("Enter the cells: ");
-        cells =scanner.nextLine();
+    public static void userInterface(Scanner scanner, AI ai){
         generateBoard();
         while(true){
-            if(coordinateCheck(scanner)){
-                break;
+            coordinateCheck(scanner);
+            if(checkWinCondition()){
+                return;
+            }
+            board = ai.moveEasy(board);
+            showBoard();
+            if(checkWinCondition()){
+                return;
             }
         }
-        checkWinCondition();
     }
-    public static boolean coordinateCheck(Scanner scanner){
+    public static void coordinateCheck(Scanner scanner){
         while(true){
             try{
-                String sign = calculateSign();
+                String sign = "X";
                 System.out.println("Enter the coordinates: ");
                 String coordinates = scanner.nextLine();
                 coordinates = coordinates.trim();
                 coordinates = coordinates.replace(" ", "");
                 if(!isInteger(coordinates.charAt(0) + "") || !isInteger(coordinates.charAt(1)+ "")){
                     System.out.println("You should enter numbers!");
-                    return false;
                 }
                 int[]xy = {Integer.parseInt(coordinates.charAt(0)+ "")-1,Integer.parseInt(coordinates.charAt(1)+ "")-1};
                 if (xy[0] < 0 || xy[0] > 2 || xy[1] < 0 || xy[1] > 2) {
@@ -46,69 +44,37 @@ public class Main {
                 } else {
                     board[xy[0]][xy[1]] = sign;
                     showBoard();
-                    return true;
+                    return;
                 }
             }catch(Exception e){
                 System.out.println("something went wrong");
             }
         }
     }
-    public static String calculateSign(){
-        int countX = countSign("X");
-        int countO = countSign("O");
-        if(countX == countO){
-            return "X";
-        }
-        return "O";
-    }
-
-    public static void checkWinCondition(){
+    public static boolean checkWinCondition(){
         if(checkDIAGONALS("X") || checkROWS("X") || checkCOLUMNS("X")){
             System.out.println("X wins");
-            return;
+            return true;
         }
         if(checkDIAGONALS("O") || checkROWS("O") || checkCOLUMNS("O")){
             System.out.println("O wins");
-            return;
-        }
-        if(gameNotFinished("X") || gameNotFinished("O")){
-            System.out.println("Game not finished");
-            return;
+            return true;
         }
         if(draw("X") || draw("O")){
             System.out.println("Draw");
+            return true;
         }
 
+        return false;
     }
     public static boolean draw(String sign){
-        if(!checkCOLUMNS(sign) && !checkROWS(sign) && !checkDIAGONALS(sign) && emptyCells() == 0){
-            return true;
-        }
-        return false;
-    }
-    public static boolean gameNotFinished(String sign){
-        if(!checkCOLUMNS(sign) && !checkROWS(sign) && !checkDIAGONALS(sign) && emptyCells() > 0){
-            return true;
-        }
-        return false;
+        return !checkCOLUMNS(sign) && !checkROWS(sign) && !checkDIAGONALS(sign) && countSign(" ") == 0;
     }
     public static int countSign(String sign){
         int count = 0;
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
                 if(board[i][j].equals(sign)){
-                    count++;
-                }
-            }
-        }
-        return count;
-    }
-
-    public static int emptyCells(){
-        int count = 0;
-        for(int i = 0; i < 3; i++){
-            for(int j = 0; j < 3; j++){
-                if(board[i][j].equals(" ")){
                     count++;
                 }
             }
@@ -141,14 +107,9 @@ public class Main {
         return false;
     }
     public static void generateBoard(){
-        int counter = 0;
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
-                board[i][j] = String.valueOf(cells.charAt(counter));
-                if(board[i][j].equals("_")){
-                    board[i][j] = " ";
-                }
-                counter++;
+                board[i][j] = " ";
             }
         }
         showBoard();
