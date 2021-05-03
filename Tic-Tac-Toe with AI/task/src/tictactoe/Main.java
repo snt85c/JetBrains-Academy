@@ -12,8 +12,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         userInterface(scanner);
     }
-    wk
-:wq
 
     public static void userInterface (Scanner scanner){
         System.out.println("Enter the cells: ");
