@@ -6,6 +6,7 @@ public class Main {
     static String[][] board = new String[3][3];
 
     public static void main(String[] args) {
+        //watch em fight
         AI ai = new AI();
         Scanner scanner = new Scanner(System.in);
         userInterface(scanner, ai);
@@ -14,21 +15,68 @@ public class Main {
     public static void userInterface(Scanner scanner, AI ai){
         generateBoard();
         while(true){
-            coordinateCheck(scanner);
-            if(checkWinCondition()){
+            System.out.println("Input command: ");
+            String command = scanner.nextLine();
+            String[] args = command.split(" ");
+            if(args.length == 1 && args[0].equals("exit")){
                 return;
             }
-            board = ai.moveEasy(board);
-            showBoard();
-            if(checkWinCondition()){
+            if(args.length < 3 || args.length > 3  && !menuInputVerifier(args)){
+                System.out.println("Bad parameters!");
+            } else {
+                showBoard();
+                startGameMode(args, ai, scanner);
                 return;
             }
         }
     }
-    public static void coordinateCheck(Scanner scanner){
+
+    public static boolean menuInputVerifier(String[] args){
+        return ((args[0].equals("start"))
+                && (args[1].equals("easy") || args[1].equals("user"))
+                && (args[2].equals("easy") || args[2].equals("user")) );
+    }
+    public static void startGameMode(String[]args, AI ai, Scanner scanner){
+        if(args[1].equals("user") && args[2].equals("easy")){
+            while(true){
+                playerMove(scanner, "X");
+                if(checkWinCondition()) return;
+                AiMove(ai, "O");
+                if(checkWinCondition()) return;
+            }
+        }
+        if(args[1].equals("easy") && args[2].equals("user")){
+            while(true){
+                AiMove(ai, "X");
+                if(checkWinCondition()) return;
+                playerMove(scanner, "O");
+                if(checkWinCondition()) return;
+            }
+        }
+        if(args[1].equals("user") && args[2].equals("user")){
+            while(true){
+                playerMove(scanner, "X");
+                if(checkWinCondition()) return;
+                playerMove(scanner, "O");
+                if(checkWinCondition()) return;
+            }
+        }
+        if(args[1].equals("easy") && args[2].equals("easy")){
+            while(true){
+                AiMove(ai, "X");
+                if(checkWinCondition()) return;
+                AiMove(ai, "O");
+                if(checkWinCondition()) return;
+            }
+        }
+    }
+    public static boolean AiMove(AI ai, String sign){
+        board = ai.moveEasy(board, sign);
+        return true;
+    }
+    public static boolean playerMove(Scanner scanner, String sign){
         while(true){
             try{
-                String sign = "X";
                 System.out.println("Enter the coordinates: ");
                 String coordinates = scanner.nextLine();
                 coordinates = coordinates.trim();
@@ -44,7 +92,7 @@ public class Main {
                 } else {
                     board[xy[0]][xy[1]] = sign;
                     showBoard();
-                    return;
+                    return true;
                 }
             }catch(Exception e){
                 System.out.println("something went wrong");
@@ -112,7 +160,6 @@ public class Main {
                 board[i][j] = " ";
             }
         }
-        showBoard();
     }
     public static void showBoard(){
         System.out.println("---------");
