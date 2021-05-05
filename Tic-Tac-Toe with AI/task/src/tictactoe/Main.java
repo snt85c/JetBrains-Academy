@@ -4,14 +4,12 @@ import java.util.Scanner;
 
 public class Main {
     static String[][] board = new String[3][3];
-
     public static void main(String[] args) {
         //signs of intelligence
         AI ai = new AI();
         Scanner scanner = new Scanner(System.in);
         userInterface(scanner, ai);
     }
-
     public static void userInterface(Scanner scanner, AI ai){
         generateBoard();
         while(true){
@@ -30,49 +28,57 @@ public class Main {
             }
         }
     }
-
     public static boolean menuInputVerifier(String[] args){
         return ((args[0].equals("start"))
                 && (args[1].equals("easy") || args[1].equals("user"))
                 && (args[2].equals("easy") || args[2].equals("user")) );
     }
     public static void startGameMode(String[]args, AI ai, Scanner scanner){
-        if(args[1].equals("user") && args[2].equals("easy")){
-            while(true){
-                playerMove(scanner, "X");
-                if(checkWinCondition()) return;
-                AiMove(ai, "O");
-                if(checkWinCondition()) return;
+        while(true){
+            switch(args[1]){
+                case "user":
+                    playerMove(scanner, "X");
+                    if(checkWinCondition()) return;
+                    break;
+                case "easy":
+                    AiMove(ai, "X", "easy");
+                    if(checkWinCondition()) return;
+                    break;
+                case "medium":
+                    AiMove(ai, "X", "medium");
+                    if(checkWinCondition()) return;
+                    break;
             }
-        }
-        if(args[1].equals("easy") && args[2].equals("user")){
-            while(true){
-                AiMove(ai, "X");
-                if(checkWinCondition()) return;
-                playerMove(scanner, "O");
-                if(checkWinCondition()) return;
-            }
-        }
-        if(args[1].equals("user") && args[2].equals("user")){
-            while(true){
-                playerMove(scanner, "X");
-                if(checkWinCondition()) return;
-                playerMove(scanner, "O");
-                if(checkWinCondition()) return;
-            }
-        }
-        if(args[1].equals("easy") && args[2].equals("easy")){
-            while(true){
-                AiMove(ai, "X");
-                if(checkWinCondition()) return;
-                AiMove(ai, "O");
-                if(checkWinCondition()) return;
+            switch(args[2]){
+                case "user":
+                    playerMove(scanner, "O");
+                    if(checkWinCondition()) return;
+                    break;
+                case "easy":
+                    AiMove(ai, "O", "easy");
+                    if(checkWinCondition()) return;
+                    break;
+                case "medium":
+                    AiMove(ai, "O", "medium");
+                    if(checkWinCondition()) return;
+                    break;
             }
         }
     }
-    public static boolean AiMove(AI ai, String sign){
-        board = ai.easy(board, sign);
-        return true;
+    public static boolean AiMove(AI ai, String sign, String difficulty){
+
+        switch(difficulty){
+            case "easy":
+                System.out.println("Making move level \"easy\"");
+                board = ai.easy(board, sign);
+                return true;
+
+            case "medium":
+                System.out.println("Making move level \"medium\"");
+                board = ai.medium(board,sign);
+                return true;
+        }
+        return false;
     }
     public static boolean playerMove(Scanner scanner, String sign){
         while(true){
