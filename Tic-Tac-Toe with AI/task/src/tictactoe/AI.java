@@ -5,7 +5,7 @@ import java.util.Random;
 public class AI {
     Random rand = new Random();
 
-    public String[][] moveEasy(String[][] board, String sign){
+    public String[][] easy(String[][] board, String sign){
         System.out.println("Making move level \"easy\"");
         while(true){
             int first = rand.nextInt(3);

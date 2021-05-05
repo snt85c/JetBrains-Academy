@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/262721/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Mon, 03 May 2021 15:47:34 UTC
+update_date: Wed, 05 May 2021 12:53:36 UTC
 stages:
 - id: 447
   step: 7434
@@ -89,6 +89,8 @@ topics:
   1:
   - title: IDE
     theory_id: 10996
+  - title: Computer programming
+    theory_id: 8739
   - title: Introduction to OOP
     theory_id: 3614
   - title: Declaring a method

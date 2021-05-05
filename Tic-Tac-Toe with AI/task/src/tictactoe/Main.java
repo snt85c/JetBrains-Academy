@@ -6,7 +6,7 @@ public class Main {
     static String[][] board = new String[3][3];
 
     public static void main(String[] args) {
-        //watch em fight
+        //signs of intelligence
         AI ai = new AI();
         Scanner scanner = new Scanner(System.in);
         userInterface(scanner, ai);
@@ -71,7 +71,7 @@ public class Main {
         }
     }
     public static boolean AiMove(AI ai, String sign){
-        board = ai.moveEasy(board, sign);
+        board = ai.easy(board, sign);
         return true;
     }
     public static boolean playerMove(Scanner scanner, String sign){

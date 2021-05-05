@@ -229,4 +229,87 @@ public class TicTacToeTest extends StageTest<String> {
 
         return CheckResult.correct();
     }
+
+    @DynamicTest(repeat = 10, order = 7)
+    CheckResult checkMediumAi() {
+        TestedProgram program = new TestedProgram();
+        program.start();
+        program.execute("start user medium");
+
+        String output = program.execute("2 2");
+
+        Grid gameGrid = Grid.fromOutput(output, 2);
+
+        CellState[][] cellStates = gameGrid.getGrid();
+
+        if (cellStates[0][0] == CellState.EMPTY && cellStates[2][2] == CellState.EMPTY) {
+            output = program.execute("1 1");
+            gameGrid = Grid.fromOutput(output, 2);
+            if (gameGrid.getGrid()[2][2] == CellState.EMPTY) {
+                return CheckResult.wrong("Looks like your Medium level AI doesn't make a correct move!");
+            }
+        } else {
+            output = program.execute("1 3");
+            gameGrid = Grid.fromOutput(output, 2);
+            if (gameGrid.getGrid()[2][0] == CellState.EMPTY) {
+                return CheckResult.wrong("Looks like your Medium level AI doesn't make a correct move!");
+            }
+        }
+        program.stop();
+
+        return CheckResult.correct();
+    }
+
+    @DynamicTest(order = 8, repeat = 5)
+    CheckResult checkMediumVsMedium() {
+
+        TestedProgram program = new TestedProgram();
+        program.start();
+
+        String output = program.execute("start medium medium");
+
+        List<Grid> gridList = Grid.allGridsFromOutput(output);
+
+        Grid.checkGridSequence(gridList);
+
+        return CheckResult.correct();
+    }
+
+    boolean isMediumNotMovingLikeHard = false;
+
+    @DynamicTest(repeat = 30, order = 9)
+    CheckResult checkMediumNotMovingLikeHard() {
+
+        if (isMediumNotMovingLikeHard) {
+            return CheckResult.correct();
+        }
+
+        TestedProgram program = new TestedProgram();
+        program.start();
+
+        program.execute("start user medium");
+
+        String output = program.execute("2 2");
+
+        Grid userMoveGrid = Grid.fromOutput(output, 1);
+        Grid mediumMoveGrid = Grid.fromOutput(output, 2);
+
+        Position mediumMove = Grid.getMove(userMoveGrid, mediumMoveGrid);
+
+        List<Position> minimaxCorrectPositions = Minimax.getAvailablePositions(userMoveGrid, CellState.O);
+
+        if (!minimaxCorrectPositions.contains(mediumMove)) {
+            isMediumNotMovingLikeHard = true;
+        }
+
+        return CheckResult.correct();
+    }
+
+    @DynamicTest(order = 10)
+    CheckResult checkMediumNotMovingLikeHardAfter() {
+        if (!isMediumNotMovingLikeHard) {
+            return CheckResult.wrong("Looks like Medium level AI doesn't make a random move!");
+        }
+        return CheckResult.correct();
+    }
 }
