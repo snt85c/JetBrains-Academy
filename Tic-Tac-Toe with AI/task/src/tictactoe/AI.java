@@ -49,7 +49,6 @@ public class AI {
                 if(counter == 2 && first != -1){
                     board[first][second] = assignment;
                     Main.showBoard();
-                    Main.checkWinCondition();
                     return true;
                 }
             }
@@ -74,7 +73,6 @@ public class AI {
                 if(counter == 2 && first != -1){
                     board[first][second] = assignment;
                     Main.showBoard();
-                    Main.checkWinCondition();
                     return true;
                 }
             }
