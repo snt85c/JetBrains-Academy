@@ -35,33 +35,23 @@ public class Main {
     }
     public static void startGameMode(String[]args, AI ai, Scanner scanner){
         while(true){
-            switch(args[1]){
-                case "user":
-                    playerMove(scanner, "X");
-                    if(checkWinCondition()) return;
-                    break;
-                case "easy":
-                    AiMove(ai, "X", "easy");
-                    if(checkWinCondition()) return;
-                    break;
-                case "medium":
-                    AiMove(ai, "X", "medium");
-                    if(checkWinCondition()) return;
-                    break;
-            }
-            switch(args[2]){
-                case "user":
-                    playerMove(scanner, "O");
-                    if(checkWinCondition()) return;
-                    break;
-                case "easy":
-                    AiMove(ai, "O", "easy");
-                    if(checkWinCondition()) return;
-                    break;
-                case "medium":
-                    AiMove(ai, "O", "medium");
-                    if(checkWinCondition()) return;
-                    break;
+            int num = 1;
+            while(num < 3) {
+                switch (args[num]) {
+                    case "user":
+                        playerMove(scanner, num == 1?"X":"O");
+                        if (checkWinCondition()) return;
+                        break;
+                    case "easy":
+                        AiMove(ai, num == 1?"X":"O", "easy");
+                        if (checkWinCondition()) return;
+                        break;
+                    case "medium":
+                        AiMove(ai, num == 1?"X":"O", "medium");
+                        if (checkWinCondition()) return;
+                        break;
+                }
+                num++;
             }
         }
     }
