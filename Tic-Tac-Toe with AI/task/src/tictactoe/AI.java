@@ -11,9 +11,8 @@ public class AI {
             int second = rand.nextInt(3);
             if(board[first][second].equals(" ")){
                 board[first][second] = sign;
-                System.out.println("easy move");
+//                System.out.println("easy move");
                 Main.showBoard();
-                Main.checkWinCondition();
                 return board;
             }
         }
@@ -21,10 +20,13 @@ public class AI {
     public String[][] medium (String[][] board, String sign){
         while(true){
             if(oneMoveRow(board, sign, sign) || oneMoveRow(board, sign.equals("X")?"O":"X", sign )){
-                System.out.println("row medium");
+//                System.out.println("row medium");
                 break;
             } else if(oneMoveColumn(board, sign, sign) || oneMoveColumn(board,sign.equals("X")?"O":"X", sign )){
-                System.out.println("column medium");
+//                System.out.println("column medium");
+                break;
+            } else if(oneMoveDiagonal(board, sign, sign) || oneMoveDiagonal(board,sign.equals("X")?"O":"X", sign )){
+//                System.out.println("diagonal medium");
                 break;
             } else {
                 easy(board, sign);
@@ -49,7 +51,6 @@ public class AI {
                 if(counter == 2 && first != -1){
                     board[first][second] = assignment;
                     Main.showBoard();
-                    Main.checkWinCondition();
                     return true;
                 }
             }
@@ -74,7 +75,6 @@ public class AI {
                 if(counter == 2 && first != -1){
                     board[first][second] = assignment;
                     Main.showBoard();
-                    Main.checkWinCondition();
                     return true;
                 }
             }
@@ -82,7 +82,43 @@ public class AI {
         return false;
     }
 
-    public void oneMoveDiagonal(String[][] board, String sign){
-
+    public boolean oneMoveDiagonal(String[][] board, String sign, String assignment){
+        int first = -1;
+        int second = -1;
+        int counter = 0;
+        for(int i = 0; i < 3; i++){
+            if(board[i][i].equals(sign)){
+                counter++;
+            }
+            if(board[i][i].equals(" ")){
+                first = i;
+                second = i;
+            }
+            if(counter == 2 && first != -1){
+                board[first][second] = assignment;
+                Main.showBoard();
+                return true;
+            }
+        }
+        first = -1;
+        second = -1;
+        counter = 0;
+        int  d = 2;
+        for(int i = 0; i < 3; i++){
+            if(board[i][d].equals(sign)){
+                counter++;
+            }
+            if(board[i][d].equals(" ")){
+                first = i;
+                second = d;
+            }
+            if(counter == 2 && first != -1){
+                board[first][second] = assignment;
+                Main.showBoard();
+                return true;
+            }
+            d--;
+        }
+        return false;
     }
 }
