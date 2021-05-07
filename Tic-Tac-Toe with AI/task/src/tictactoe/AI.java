@@ -11,7 +11,6 @@ public class AI {
             int second = rand.nextInt(3);
             if(board[first][second].equals(" ")){
                 board[first][second] = sign;
-//                System.out.println("easy move");
                 Main.showBoard();
                 return board;
             }
@@ -20,13 +19,10 @@ public class AI {
     public String[][] medium (String[][] board, String sign){
         while(true){
             if(oneMoveRow(board, sign, sign) || oneMoveRow(board, sign.equals("X")?"O":"X", sign )){
-//                System.out.println("row medium");
                 break;
             } else if(oneMoveColumn(board, sign, sign) || oneMoveColumn(board,sign.equals("X")?"O":"X", sign )){
-//                System.out.println("column medium");
                 break;
             } else if(oneMoveDiagonal(board, sign, sign) || oneMoveDiagonal(board,sign.equals("X")?"O":"X", sign )){
-//                System.out.println("diagonal medium");
                 break;
             } else {
                 easy(board, sign);
