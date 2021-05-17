@@ -5,22 +5,21 @@ import java.util.Scanner;
 public class Main {
     static String[][] board = new String[3][3];
     public static void main(String[] args) {
-        //signs of intelligence
+        //MINIMAX
         AI ai = new AI();
         Scanner scanner = new Scanner(System.in);
         userInterface(scanner, ai);
     }
     public static void userInterface(Scanner scanner, AI ai){
-//        ask for input, checks length and verify the input in another method, if correct, starts the game
         generateBoard();
         while(true){
-            System.out.println("Input command: ");
+            System.out.print("Input command: ");
             String command = scanner.nextLine();
             String[] args = command.split(" ");
             if(args.length == 1 && args[0].equals("exit")){
                 return;
             }
-            if(args.length < 3 || args.length > 3  && !menuInputVerifier(args)){
+            if((args.length != 3  || !menuInputVerifier(args))){
                 System.out.println("Bad parameters!");
             } else {
                 showBoard();
@@ -31,49 +30,46 @@ public class Main {
     }
     public static boolean menuInputVerifier(String[] args){
         return ((args[0].equals("start"))
-                && (args[1].equals("easy") || args[1].equals("user"))
-                && (args[2].equals("easy") || args[2].equals("user")) );
+                && (args[1].equals("user")
+                || args[1].equals("easy")
+                || args[1].equals("medium")
+                ||args[1].equals("hard") )
+                && (args[2].equals("user")
+                || args[2].equals("easy")
+                || args[2].equals("medium")
+                ||args[2].equals("hard")));
     }
     public static void startGameMode(String[]args, AI ai, Scanner scanner){
-//        two loops, one for the entire game, one for the single phase of the game
-//         where the sign get swapped inside the switch statement, which determines
-//         who plays and the difficulty
         while(true){
             int num = 1;
             while(num < 3) {
                 switch (args[num]) {
                     case "user":
                         playerMove(scanner, num == 1?"X":"O");
-                        if (checkAllWinConditions()) return;
+                        if (checkWinCondition(num == 1?"X":"O")) return;
                         break;
                     case "easy":
-                        AiMove(ai, num == 1?"X":"O", "easy");
-                        if (checkAllWinConditions()) return;
+                        System.out.println("Making move level \"easy\"");
+                        board = ai.easy(board, num == 1?"X":"O");
+                        if (checkWinCondition(num == 1?"X":"O")) return;
                         break;
                     case "medium":
-                        AiMove(ai, num == 1?"X":"O", "medium");
-                        if (checkAllWinConditions()) return;
+                        System.out.println("Making move level \"medium\"");
+                        board = ai.medium(board,num == 1?"X":"O");
+                        if (checkWinCondition(num == 1?"X":"O")) return;
+                        break;
+                    case "hard":
+                        System.out.println("Making move level \"hard\"");
+                        board = ai.hard(board,num == 1?"X":"O");
+                        if (checkWinCondition(num == 1?"X":"O")) return;
                         break;
                 }
                 num++;
             }
         }
     }
-    public static void AiMove(AI ai, String sign, String difficulty){
-// ai move wrapper, there is no need for it, but it was done expecting more complexity in the future
-        switch(difficulty){
-            case "easy":
-                System.out.println("Making move level \"easy\"");
-                board = ai.easy(board, sign);
-                return;
 
-            case "medium":
-                System.out.println("Making move level \"medium\"");
-                board = ai.medium(board,sign);
-                return;
-        }
-    }
-    public static void playerMove(Scanner scanner, String sign){
+    public static boolean playerMove(Scanner scanner, String sign){
         while(true){
             try{
                 System.out.println("Enter the coordinates: ");
@@ -91,33 +87,34 @@ public class Main {
                 } else {
                     board[xy[0]][xy[1]] = sign;
                     showBoard();
-                    return;
+                    return true;
                 }
             }catch(Exception e){
                 System.out.println("something went wrong");
             }
         }
     }
-    public static boolean checkAllWinConditions(){
-        if(checkWinDIAGONALS("X") || checkWinROWS("X") || checkWinCOLUMNS("X")){
+    public static boolean checkWinCondition(String sign){
+        if(checkDIAGONALS("X") || checkROWS("X") || checkCOLUMNS("X")){
             System.out.println("X wins");
             return true;
         }
-        if(checkWinDIAGONALS("O") || checkWinROWS("O") || checkWinCOLUMNS("O")){
+        if(checkDIAGONALS("O") || checkROWS("O") || checkCOLUMNS("O")){
             System.out.println("O wins");
             return true;
         }
-        if(checkDraw("X") || checkDraw("O")){
+        if(draw("X") || draw("O")){
             System.out.println("Draw");
             return true;
         }
-
         return false;
     }
-    public static boolean checkDraw(String sign){
-        return !checkWinCOLUMNS(sign) && !checkWinROWS(sign) && !checkWinDIAGONALS(sign) && countSignOnBoard(" ") == 0;
+
+    public static boolean draw(String sign){
+        return !checkCOLUMNS(sign) && !checkROWS(sign) && !checkDIAGONALS(sign) && countSign(" ") == 0;
     }
-    public static int countSignOnBoard(String sign){
+
+    public static int countSign(String sign){
         int count = 0;
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
@@ -128,7 +125,7 @@ public class Main {
         }
         return count;
     }
-    public static boolean checkWinROWS(String sign){
+    public static boolean checkROWS(String sign){
         for(int i = 0; i < 3; i++){
             if(board[i][0].equals(sign) && board[i][1].equals(sign) && board[i][2].equals(sign)){
                 return true;
@@ -136,7 +133,7 @@ public class Main {
         }
         return false;
     }
-    public static boolean checkWinCOLUMNS(String sign){
+    public static boolean checkCOLUMNS(String sign){
         for(int i = 0; i < 3; i++){
             if(board[0][i].equals(sign) && board[1][i].equals(sign) && board[2][i].equals(sign)){
                 return true;
@@ -144,7 +141,7 @@ public class Main {
         }
         return false;
     }
-    public static boolean checkWinDIAGONALS(String sign){
+    public static boolean checkDIAGONALS(String sign){
         if(board[0][0].equals(sign) && board[1][1].equals(sign) && board[2][2].equals(sign)){
             return true;
         }
@@ -153,6 +150,7 @@ public class Main {
         }
         return false;
     }
+
     public static void generateBoard(){
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
@@ -180,4 +178,3 @@ public class Main {
         }
     }
 }
-

@@ -214,7 +214,6 @@ public class TicTacToeTest extends StageTest<String> {
         return CheckResult.correct();
     }
 
-
     @DynamicTest(order = 6)
     CheckResult checkEasyVsEasy() {
 
@@ -310,6 +309,51 @@ public class TicTacToeTest extends StageTest<String> {
         if (!isMediumNotMovingLikeHard) {
             return CheckResult.wrong("Looks like Medium level AI doesn't make a random move!");
         }
+        return CheckResult.correct();
+    }
+
+    @DynamicTest(order = 11)
+    CheckResult checkHardAi() {
+
+        TestedProgram program = new TestedProgram();
+        program.start();
+
+        String output = program.execute("start user hard");
+        Grid grid = Grid.fromOutput(output);
+        Position nextMove = Minimax.getMove(grid, CellState.X);
+        output = program.execute((nextMove.x + 1) + " " + (nextMove.y + 1));
+
+        while (!output.toLowerCase().contains("win") && !output.toLowerCase().contains("draw")) {
+            Grid gridAfterUserMove = Grid.fromOutput(output);
+            Grid gridAfterAiMove = Grid.fromOutput(output, 2);
+            Position aiMove = Grid.getMove(gridAfterUserMove, gridAfterAiMove);
+
+            List<Position> correctMinimaxMovePositions = Minimax.getAvailablePositions(gridAfterUserMove, CellState.O);
+            if (!correctMinimaxMovePositions.contains(aiMove)) {
+                return CheckResult.wrong("Your minimax algorithm is wrong! It chooses wrong positions to make a move!");
+            }
+
+            nextMove = Minimax.getMove(gridAfterAiMove, CellState.X);
+
+            output = program.execute((nextMove.x + 1) + " " + (nextMove.y + 1));
+        }
+
+        return CheckResult.correct();
+    }
+
+    @DynamicTest(repeat = 5, order = 12)
+    CheckResult checkHardVsHard() {
+
+        TestedProgram program = new TestedProgram();
+        program.start();
+
+        String output = program.execute("start hard hard");
+
+        if (!output.toLowerCase().contains("draw")) {
+            return CheckResult.wrong("The result of the game between minimax algorithms should be always 'Draw'!\n" +
+                "Make sure your output contains 'Draw'.");
+        }
+
         return CheckResult.correct();
     }
 }

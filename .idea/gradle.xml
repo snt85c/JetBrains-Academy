@@ -8,7 +8,7 @@
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="gradleJvm" value="#JAVA_INTERNAL" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
@@ -19,6 +19,12 @@
             <option value="$PROJECT_DIR$/Topics/Processing strings/Parse url" />
             <option value="$PROJECT_DIR$/Topics/Processing strings/The lucky ticket" />
             <option value="$PROJECT_DIR$/Topics/Processing strings/Theory" />
+            <option value="$PROJECT_DIR$/Topics/Recursion/Alternating Fibonacci numbers" />
+            <option value="$PROJECT_DIR$/Topics/Recursion/Fix the method to print strings in the reverse order" />
+            <option value="$PROJECT_DIR$/Topics/Recursion/K-combination" />
+            <option value="$PROJECT_DIR$/Topics/Recursion/N-th power" />
+            <option value="$PROJECT_DIR$/Topics/Recursion/Number of decompositions" />
+            <option value="$PROJECT_DIR$/Topics/Recursion/Theory" />
             <option value="$PROJECT_DIR$/util" />
           </set>
         </option>
